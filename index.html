@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Wikimedia API Helper</title>
+    <meta name="description" content="Skeleton HTML for Twitter Bootstrap 3.2.0">
+    <meta name="author" content="Author">
+
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap files -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.css" />
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form id="wikimediaform">
+                    <div class="form-group">
+                        <label for="mediaurl">Enter the URL of an image on wikipedia.</label>
+                        <input type="url" class="form-control typeahead" id="mediaurl" placeholder="URL">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <p id="content"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6"><strong>License: </strong><span id="license"></span>
+            </div>
+            <div class="col-md-6"><strong>LicenseShortName: </strong><span id="licenseshort"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><strong>Artist: </strong><span id="artist"></span>
+            </div>
+            <div class="col-md-6"><strong>Credit: </strong><span id="credit"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><strong>Categories: </strong><span id="categories"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><strong>ImageDescription: </strong><span id="imagedesc"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><strong>ObjectName: </strong><span id="objectname"></span>
+            </div>
+        </div>
+        <div id="json"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
