@@ -12,8 +12,8 @@ function getData(url) {
 $('#wikimediaform').submit(function(event) {
     var url = $("#mediaurl").val();
     var endpoint = 'https://commons.wikimedia.org/w/api.php';
-    if (/https:\/\/[^\/]*\.wikipedia\.org\/.*media\/File:/.test(url)) {
-        var filename = /File:.*?$/i.exec(url);
+    if (/https:\/\/[^\/]*\.wiki[pm]edia\.org\/.*?\/File:/.test(url)) {
+        var filename = /File:[^\?]+/i.exec(url);
         var options = '?action=query&format=json&prop=imageinfo&' + 
             'iilimit=1&iiprop=url|extmetadata&iiurlwidth=445&' + 
             'titles=' + filename;
