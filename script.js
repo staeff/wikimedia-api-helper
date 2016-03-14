@@ -21,7 +21,8 @@ $('#wikimediaform').submit(function(event) {
 
         getData(api_call).done(function(data) {
             var pages = data.query.pages,
-                pagekey;
+                pagekey,
+                output;
             // we need the supposedly only key which is not predictable
             for(var key in pages) {
                 // hasOwnProperty protects against inherited props &&
@@ -30,19 +31,25 @@ $('#wikimediaform').submit(function(event) {
                     pagekey = key;
                 }
             }
-                $('#json').JSONView(data);
-            var imageinfo = pages[pagekey].imageinfo[0],
-                thumburl = imageinfo.thumburl,
-                desc_url = imageinfo.descriptionurl,
+            $('#json').JSONView(data);
+            if (pagekey  === '-1') {
+                var title = pages[pagekey].title;
+                output = '<p>Medium ' + title + ' was not found</p>';
+                $('#content').html(output); 
+            } else {
+                var imageinfo = pages[pagekey].imageinfo[0],
+                    thumburl = imageinfo.thumburl,
+                    desc_url = imageinfo.descriptionurl;
                 output = '<img src="' + thumburl + '"/>';
-            $('#content').html(output);
-            $('#license').text(imageinfo.extmetadata.License.value);
-            $('#licenseshort').text(imageinfo.extmetadata.LicenseShortName.value);
-            $('#artist').text(imageinfo.extmetadata.Artist.value);
-            $('#credit').text(imageinfo.extmetadata.Credit.value);
-            $('#categories').text(imageinfo.extmetadata.Categories.value);
-            $('#imagedesc').text(imageinfo.extmetadata.ImageDescription.value);
-            $('#objectname').text(imageinfo.extmetadata.ObjectName.value);
+                $('#content').html(output);
+                $('#license').text(imageinfo.extmetadata.License.value);
+                $('#licenseshort').text(imageinfo.extmetadata.LicenseShortName.value);
+                $('#artist').text(imageinfo.extmetadata.Artist.value);
+                $('#credit').text(imageinfo.extmetadata.Credit.value);
+                $('#categories').text(imageinfo.extmetadata.Categories.value);
+                $('#imagedesc').text(imageinfo.extmetadata.ImageDescription.value);
+                $('#objectname').text(imageinfo.extmetadata.ObjectName.value);                
+            }
         });
     }
   event.preventDefault();
